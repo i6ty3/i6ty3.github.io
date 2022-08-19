@@ -73,46 +73,60 @@ for (i = 0; i < coll.length; i++) {
 
 // FORMs
 
-var nameInput = document.getElementById("name");
-var emailInput = document.getElementById("email");
-var phoneInput = document.getElementById("phone");
 
+var nameInput = document.getElementById("name");
 nameInput.oninput = function () {
     var fname = document.forms.formContact.fullName.value;
     var regName = /\d+/g;
     var nameElement = document.getElementById("namealert");
     if (fname == "" || regName.test(fname)) {
         nameElement.style.display = 'block';
-        fname.focus();
-        return false;
     }
     else
-        nameElement.style.display = 'none';
+    nameElement.style.display = 'none';
+    enableSubmit();
 }
 
+var emailInput = document.getElementById("email");
 emailInput.oninput = function () {
     var email = document.forms.formContact.email.value;
     var regEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}/g;     //Javascript reGex for Email Validation.
     var emailElement = document.getElementById("emailalert");
     if (email == "" || !regEmail.test(email)) {
         emailElement.style.display = 'block';
-        email.focus();
     }
     else
         emailElement.style.display = 'none';
+    enableSubmit();
 }
 
+var phoneInput = document.getElementById("phone");
 phoneInput.oninput = function () {
     var phone = document.forms.formContact.phone.value;
     var regPhone = /^\d{11}/g;                                           // Javascript reGex for Phone Number validation.
     var phoneElement = document.getElementById("phonealert");
     if (phone == "" || !regPhone.test(phone)) {
         phoneElement.style.display = 'block';
-        phone.focus();
-        return false;
     }
     else
         phoneElement.style.display = 'none';
+    enableSubmit();
+}
+
+enableSubmit = function () {
+    var fname = document.forms.formContact.fullName.value;
+    var email = document.forms.formContact.email.value;
+    var phone = document.forms.formContact.phone.value;
+    var nameElement = document.getElementById("namealert");
+    var emailElement = document.getElementById("emailalert");
+    var phoneElement = document.getElementById("phonealert");
+    var submitButton = document.getElementById("submitButton");
+console.log(nameElement);
+    if (fname == "" || email == "" || phone == "" || nameElement.style.display == 'block' || emailElement.style.display == 'block' || phoneElement.style.display == 'block') {
+        submitButton.classList.add("disabled");
+    }
+    else
+    submitButton.classList.remove("disabled")
 }
 
 window.addEventListener("load", function() {
