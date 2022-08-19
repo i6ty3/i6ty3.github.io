@@ -11572,3 +11572,37 @@ html {
   border-radius: 1rem;
   border-color: white; 
 }
+.profile-pic{
+  border-radius: 100%;
+  border: solid 10px var(--bs-secondary);
+}
+
+.profile-container {
+  position: relative;
+  width: 50%;
+}
+
+.profile-overlay{
+  border-radius: 100%;
+  border: solid 10px var(--bs-secondary);
+  position:absolute;
+  left: 50%;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #008CBA; 
+}
+.profile-text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+.profile-container:hover .profile-overlay{
+  opacity: 1;
+}
