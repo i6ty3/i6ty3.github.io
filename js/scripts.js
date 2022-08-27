@@ -83,7 +83,7 @@ nameInput.oninput = function () {
         nameElement.style.display = 'block';
     }
     else
-    nameElement.style.display = 'none';
+        nameElement.style.display = 'none';
     enableSubmit();
 }
 
@@ -121,31 +121,32 @@ enableSubmit = function () {
     var emailElement = document.getElementById("emailalert");
     var phoneElement = document.getElementById("phonealert");
     var submitButton = document.getElementById("submitButton");
-console.log(nameElement);
+    console.log(nameElement);
     if (fname == "" || email == "" || phone == "" || nameElement.style.display == 'block' || emailElement.style.display == 'block' || phoneElement.style.display == 'block') {
         submitButton.classList.add("disabled");
     }
     else
-    submitButton.classList.remove("disabled")
+        submitButton.classList.remove("disabled")
 }
 
-window.addEventListener("load", function() {
+window.addEventListener("load", function () {
     const form = document.getElementById('contactForm');
     const successElement = document.getElementById('submitSuccessMessage');
-    form.addEventListener("submit", function(e) {
-      e.preventDefault();
-      const data = new FormData(form);
-      const action = e.target.action;
-      fetch(action, {
-        method: 'POST',
-        body: data,
-      })
-      .then(() => {
-          successElement.style.display = 'block';
-          setTimeout(() => {
-          successElement.style.display = 'none';
-        }, 5000);
-      })
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const data = new FormData(form);
+        const action = e.target.action;
+        fetch(action, {
+            method: 'POST',
+            body: data,
+        })
+            .then(() => {
+                successElement.style.display = 'block';
+                setTimeout(() => {
+                    successElement.style.display = 'none';
+                }, 5000);
+            })
     });
-  });
-  
+});
+
+

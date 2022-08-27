@@ -11461,8 +11461,8 @@ html {
 
 @media (min-width: 992px) {
   .masthead {
-    padding-top: calc(6rem + 50px);
-    padding-bottom: 6rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
   }
   .masthead .masthead-heading {
     font-size: 4rem;
@@ -11486,7 +11486,7 @@ html {
   left: 0;
   transition: all 0.2s ease-in-out;
   opacity: 0;
-  background-color: var(--bs-secondary);
+  background-color: var(--bs-primary);
 }
 .portfolio .portfolio-item .portfolio-item-caption:hover {
   opacity: 1;
@@ -11584,18 +11584,19 @@ html {
 }
 .profile-pic{
   border-radius: 100%;
-  border: solid 10px var(--bs-secondary);
+  border: solid 10px var(--bs-primary);
+  filter: contrast(1.2);  
 }
 
 /* profile pic animated */
-.profile-pic:hover{
+/* .profile-pic:hover{
   filter: contrast(1.3);  
   transition: ease-out ;
-}
+} */
 
 /* name color change */
 .colorchange:hover{
-  color: var(--bs-secondary);
+  color: var(--bs-primary);
   transition: 1000ms;
 }
 
@@ -11630,15 +11631,15 @@ html {
 }
 
 #slider .first-slide {
-  animation: slide-left-first 7s ease-in-out both infinite;
+  animation: slide-left-first 5s ease-in-out both infinite;
 }
 
 #slider .second-slide {
-   animation: slide-left-second 7s ease-in-out both infinite;
+   animation: slide-left-second 5s ease-in-out both infinite;
 }
 
 #slider .third-slide {
-   animation: slide-left-third 7s ease-in-out both infinite;
+   animation: slide-left-third 5s ease-in-out both infinite;
 }
 
 @keyframes slide-left-first {
@@ -11684,4 +11685,3 @@ html {
 .portfolio-item{
   background-color: white;
 }
-
