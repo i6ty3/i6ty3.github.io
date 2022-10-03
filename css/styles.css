@@ -35,8 +35,8 @@
   --bs-gray-900: #212529;
   /* --bs-primary: #1abc9c;
   --bs-secondary: #2c3e50; */
-  --bs-primary:  #51dbff;
-  --bs-secondary: #ff5f81;
+  --bs-primary:  #292929;
+  --bs-secondary: #000000;
   --bs-success: #198754;
   --bs-info: #0dcaf0;
   --bs-warning: #ffc107;
@@ -44,8 +44,8 @@
   --bs-light: #f8f9fa;
   --bs-dark: #212529;
   /* --bs-primary-rgb: 26, 188, 156; */
-  --bs-primary-rgb: 81,219,255;
-  --bs-secondary-rgb: 255, 95, 129;
+  --bs-primary-rgb: 41,41,41;
+  --bs-secondary-rgb: 18,18,18;
   /* --bs-secondary-rgb: 44, 62, 80; */
   --bs-success-rgb: 25, 135, 84;
   --bs-info-rgb: 13, 202, 240;
@@ -3047,8 +3047,8 @@ textarea.form-control-lg {
   border-color: var(--bs-primary);
 }
 .btn-primary:hover {
-  color: #fff;
-  background-color: var(--bs-secondary);
+  color: var(--bs-secondary);
+  background-color: white;
   border-color: var(--bs-secondary);
 }
 .btn-check:focus + .btn-primary, .btn-primary:focus {
@@ -11524,7 +11524,7 @@ html {
 }
 
 .copyright {
-  background-color: #6e2e3f;
+  background-color: #292929;
 }
 
 /* collapsible */
@@ -11541,6 +11541,7 @@ html {
 }
 
 .collapsible.active, .collapsible:hover {
+  color: white;
   background-color: var(--bs-primary);
 }
 
@@ -11561,6 +11562,7 @@ html {
 
 .collapsible.active:after {
   content: "<"; /* Unicode character for "minus" sign (-) */
+  color: white;
   font-weight: 900;
 }
 .divider-long{
