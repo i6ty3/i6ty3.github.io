@@ -148,5 +148,3 @@ window.addEventListener("load", function () {
             })
     });
 });
-
-
