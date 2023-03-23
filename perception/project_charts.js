@@ -323,7 +323,7 @@ async function bubble() {
     d3.selectAll(".bubbl")
         .on("mouseover", function () {
             bgcolor = d3.select(this).style("color")
-            d3.selectAll(".bubbl").style("background-color", bgcolor).style("color", "white").style("padding", "5px").style("border-radius", "15px")
+            d3.selectAll(".bubbl").style("background-color", bgcolor).style("color", "white").style("border-radius", "15px")
             const category = d3.select(this).attr("classtype");
             d3.selectAll("circle.bubbles")
                 .style("stroke", "white")
@@ -335,7 +335,7 @@ async function bubble() {
 
         })
         .on("mouseout", function () {
-            d3.selectAll(".bubbl").style("background-color", "transparent").style("color", bgcolor).style("padding", "0")
+            d3.selectAll(".bubbl").style("background-color", "transparent").style("color", bgcolor)
             d3.selectAll("circle.bubbles").interrupt().transition().duration(700).style("opacity", 1).style("stroke", "None");
             d3.selectAll("line.reg").remove()
 
