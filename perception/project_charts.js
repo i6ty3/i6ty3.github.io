@@ -86,6 +86,7 @@ async function lolipop() {
         .attr("x2", function (d) { return x(d.likely); })
         .attr("y1", function (d) { return y(d.factors); })
         .attr("y2", function (d) { return y(d.factors); })
+        .attr("data-factors", function (d) { return d.factors })
         .attr("stroke", "grey")
         .attr("stroke-width", "2px")
 
@@ -99,6 +100,7 @@ async function lolipop() {
         .attr("r", "6")
         .style("fill", "violet")
         .attr("data-value", function (d) { return "Unlikely:" + d.unlikely })
+        .attr("data-factors", function (d) { return d.factors })
         .attr("data-category", "unlikely")
         .on("mouseover", mouseover)
         .on("mousemove", mousemove)
@@ -114,6 +116,7 @@ async function lolipop() {
         .attr("r", "6")
         .style("fill", "cornflowerblue")
         .attr("data-value", function (d) { return "Likely:" + d.likely })
+        .attr("data-factors", function (d) { return d.factors })
         .attr("data-category", "likely")
         .on("mouseover", mouseover)
         .on("mousemove", mousemove)
@@ -150,7 +153,7 @@ async function lolipop() {
     d3.selectAll(".lolipop")
         .on("mouseover", function () {
             bgcolor = d3.select(this).style("color")
-            d3.select(this).style("background-color", bgcolor).style("color", "white").style("padding", "5px").style("border-radius", "15px")
+            d3.select(this).style("background-color", bgcolor).style("color", "white").style("border-radius", "15px")
             const category = d3.select(this).attr("classtype");
             d3.selectAll("circle.first").transition().duration(500).filter(`:not([data-category = "${category}"])`)
                 .style("opacity", .3);
@@ -159,9 +162,25 @@ async function lolipop() {
 
         })
         .on("mouseout", function () {
-            d3.select(this).style("background-color", "transparent").style("color", bgcolor).style("padding", "0")
-            d3.selectAll("circle.first").transition().duration(500).style("opacity", 1);
-            d3.selectAll("line.first").transition().duration(500).style("opacity", 1);
+            d3.select(this).interrupt().style("background-color", "transparent").style("color", bgcolor)
+            d3.selectAll("circle.first").interrupt().style("opacity", 1);
+            d3.selectAll("line.first").interrupt().style("opacity", 1);
+        })
+    d3.selectAll(".lolip")
+        .on("mouseover", function () {
+            bgcolor = d3.select(this).style("color")
+            d3.select(this).style("background-color", bgcolor).style("color", "white").style("border-radius", "15px")
+            const category = d3.select(this).attr("data-factors");
+            d3.selectAll("circle.first").transition().duration(500).filter(`:not([data-factors = "${category}"])`)
+                .style("opacity", .2);
+            d3.selectAll("line.first").transition().duration(500).filter(`:not([data-factors = "${category}"])`)
+                .style("opacity", 0);
+
+        })
+        .on("mouseout", function () {
+            d3.select(this).interrupt().style("background-color", "transparent").style("color", bgcolor)
+            d3.selectAll("circle.first").interrupt().style("opacity", 1);
+            d3.selectAll("line.first").interrupt().style("opacity", 1);
         })
 };
 lolipop()
