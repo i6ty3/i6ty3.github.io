@@ -119,6 +119,15 @@ async function lolipop() {
         .on("mousemove", mousemove)
         .on("mouseleave", mouseleave)
 
+    // Add X axis label:
+    svg.append("text")
+        .attr("text-anchor", "end")
+        .attr("x", width / 2)
+        .attr("y", height + margin.top + 20)
+        .style("font-size", "12px")
+        .style("fill", "#777777")
+        .text("Score");
+
 
     // svg.selectAll("myLabel")
     //     .data(data)
@@ -141,7 +150,7 @@ async function lolipop() {
     d3.selectAll(".lolipop")
         .on("mouseover", function () {
             bgcolor = d3.select(this).style("color")
-            d3.select(this).transition().duration(500).style("background-color", bgcolor).style("color", "white").style("padding", "5px").style("border-radius", "15px")
+            d3.select(this).style("background-color", bgcolor).style("color", "white").style("padding", "5px").style("border-radius", "15px")
             const category = d3.select(this).attr("classtype");
             d3.selectAll("circle.first").transition().duration(500).filter(`:not([data-category = "${category}"])`)
                 .style("opacity", .3);
@@ -150,7 +159,7 @@ async function lolipop() {
 
         })
         .on("mouseout", function () {
-            d3.select(this).interrupt().transition().duration(300).style("background-color", "transparent").style("color", bgcolor).style("padding", "0")
+            d3.select(this).style("background-color", "transparent").style("color", bgcolor).style("padding", "0")
             d3.selectAll("circle.first").transition().duration(500).style("opacity", 1);
             d3.selectAll("line.first").transition().duration(500).style("opacity", 1);
         })
@@ -158,7 +167,7 @@ async function lolipop() {
 lolipop()
 async function bubble() {
     // set the dimensions and margins of the graph
-    const margin = { top: 10, right: 20, bottom: 30, left: 50 },
+    const margin = { top: 10, right: 20, bottom: 50, left: 50 },
         width = 300 - margin.left - margin.right,
         height = 300 - margin.top - margin.bottom;
 
@@ -273,10 +282,29 @@ async function bubble() {
             .style("stroke-dasharray", "10,10")
             .style("opacity", 1)
     }
+    // Add X axis label:
+    svg.append("text")
+        .attr("text-anchor", "end")
+        .attr("x", width / 2 + margin.left)
+        .attr("y", height + margin.top + 20)
+        .style("font-size", "12px")
+        .style("fill", "#777777")
+        .text("Likeliness to Book");
+
+    // Y axis label:
+    svg.append("text")
+        .attr("text-anchor", "middle")
+        .attr("transform", "rotate(-90)")
+        .attr("y", -margin.left + 20)
+        .attr("x", -margin.top - height / 2 + 20)
+        .style("font-size", "12px")
+        .style("fill", "#777777")
+        .text("Perception of Security Rating")
+
     d3.selectAll(".bubbl")
         .on("mouseover", function () {
             bgcolor = d3.select(this).style("color")
-            d3.selectAll(".bubbl").transition().duration(500).style("background-color", bgcolor).style("color", "white").style("padding", "5px").style("border-radius", "15px")
+            d3.selectAll(".bubbl").style("background-color", bgcolor).style("color", "white").style("padding", "5px").style("border-radius", "15px")
             const category = d3.select(this).attr("classtype");
             d3.selectAll("circle.bubbles")
                 .style("stroke", "white")
@@ -288,7 +316,7 @@ async function bubble() {
 
         })
         .on("mouseout", function () {
-            d3.selectAll(".bubbl").interrupt().transition().duration(300).style("background-color", "transparent").style("color", bgcolor).style("padding", "0")
+            d3.selectAll(".bubbl").style("background-color", "transparent").style("color", bgcolor).style("padding", "0")
             d3.selectAll("circle.bubbles").interrupt().transition().duration(700).style("opacity", 1).style("stroke", "None");
             d3.selectAll("line.reg").remove()
 
@@ -299,12 +327,14 @@ bubble()
 async function doughnut() {
 
     // set the dimensions and margins of the graph
-    const width = 400,
-        height = 400,
-        margin = 40;
+    const margin = { top: 50, right: 10, bottom: 50, left: 10 },
+        width = 400 - margin.left - margin.right,
+        height = 400 - margin.top - margin.bottom;
+
+
 
     // The radius of the pieplot is half the width or half the height (smallest one). I subtract a bit of margin.
-    const radius = Math.min(width, height) / 2 - margin
+    const radius = Math.min(width, height) / 2
 
     // append the svg object to the div called 'my_dataviz'
     const svg = d3.select("#third-fig")
@@ -443,7 +473,14 @@ async function doughnut() {
             const midangle = d.startAngle + (d.endAngle - d.startAngle) / 2
             return (midangle < Math.PI ? 'start' : 'end')
         })
+    // Add X axis label:
+    svg.append("text")
+        .attr("text-anchor", "end")
+        .attr("x", width / 2 + margin.left)
+        .attr("y", height + margin.top + 20)
+        .style("font-size", "12px")
+        .style("fill", "#777777")
+        .text("Likeliness to Book");
 
-    
 }
 doughnut()
