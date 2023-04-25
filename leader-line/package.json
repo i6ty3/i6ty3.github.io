@@ -47,5 +47,8 @@
   "author": {
     "name": "anseki",
     "url": "https://github.com/anseki"
+  },
+  "dependencies": {
+    "minimist": "^1.2.8"
   }
 }
