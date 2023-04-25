@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <title>Travel</title>
+    <script src="https://d3js.org/d3.v7.min.js" charset="utf-8"></script>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Leader Line by Anseki-->
+    <script src="../leader-line/leader-line.min.js"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet"
+        type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="../css/home.css" rel="stylesheet" />
+</head>
+
+<body id="page-top">
+    <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="#page-top">
+                <img src="../assets/img/logo.png" height="50 rem">
+                <!-- <i class="fas fa-home"></i> -->
+            </a>
+            <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button"
+                data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+                Menu
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
+                            href="#intro">Intro</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
+                            href="#factors">Factors</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
+                            href="#security">Security</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
+                            href="#perception">Perception</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
+                            href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section class="page-section mb-0">
+        <!-- <header class="masthead"> -->
+        <div id="intro">
+            <h1 class="page-section-heading text-center text-secondary masthead">Parental Leave Policies</h1>
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+        </div>
+        <!-- </header> -->
+        <div class="container">
+            <div class="m-4" style="text-align: center;">Parental leave policies vary across the business world. Some
+                companies offer paid parental leave while others offer unpaid parental leave. The duration of parental
+                leave also varies from company to company. In some countries, the government mandates a minimum number
+                of weeks of parental leave that companies must offer to their employees. For example, in the United
+                States, there is no federal law mandating paid parental leave. However, some states have passed laws
+                mandating paid parental leave for employees.
+            </div>
+            <br><br>
+            <div class="lead" style="text-align: center;">
+                The following are some findings from the dataset provided by Maven Analytics crowdsourced parental leave
+                data from 1,601 companies
+            </div>
+        </div>
+    </section>
+    <div class="divider-custom">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+        <div class="divider-custom-line"></div>
+    </div>
+    <section id="factors" class="page-section mb-0">
+        <div class="container">
+            <h2 class="text-secondary page-section-heading text-center">Existence of Parental Leaves</h2><br>
+            <div class="row"> 
+                <div class="col-12 col-md-8 col-lg-6 m-auto h-100 position-sticky" style="top: 6rem;">
+                    <div id="first-fig"></div>
+                </div>
+                <div class="col-lg-6 m-auto lead bg-white bg-opacity-50" style="text-align:justify; z-index: 1;">
+                    <p class="stack" id="point1">
+                        <span
+                            style="color: white; background-color:#0B132B; border-radius: 10px; padding: 5px; font-weight: bold; box-shadow: 2px 2px 2px #00ffff;">1.</span>
+                        Most companies do not have any record of paternity leaves
+                    </p>
+                    <br>
+                    <p class="stack" id="point2">
+                        <span
+                            style="color: white; background-color:#0B132B; border-radius: 10px; padding: 5px; font-weight: bold; box-shadow: 2px 2px 2px #00ffff;">2.</span>
+                        1/3rd of the companies do not provide Unpaid Maternity Leave
+                    </p>
+                    <br>
+                    <p class="stack" id="point3">
+                        <span
+                            style="color: white; background-color:#0B132B; border-radius: 10px; padding: 5px; font-weight: bold; box-shadow: 2px 2px 2px #00ffff;">3.</span>
+                        All but 3% of the companies provide Paid Maternity Leave
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact Section-->
+    <section class="page-section" id="contact">
+        <div class="container">
+            <!-- Contact Section Heading-->
+            <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Leave a Message</h2>
+            <!-- Icon Divider-->
+            <div class="divider-custom">
+                <div class="divider-custom-line"></div>
+                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                <div class="divider-custom-line"></div>
+            </div>
+            <!-- Contact Section Form-->
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-xl-7">
+                    <form name="formContact" id="contactForm"
+                        action="https://script.google.com/macros/s/AKfycbzd4BtRNDYN81crXYqybOlg153rWPlIP8ZMCmwmXtc9e18fJiVWCEbYn_OR3G49gb358g/exec"
+                        method="post">
+                        <!-- Name input-->
+                        <div class="form-floating mb-3">
+                            <input name="fullName" class="form-control" id="name" type="text"
+                                placeholder="Enter your name..." oninput="return naming()" />
+                            <label for="name">Full name</label>
+                            <div id="namealert" class="invalid-feedback">A name is required.</div>
+                        </div>
+                        <!-- Email address input-->
+                        <div class="form-floating mb-3">
+                            <input name="email" class="form-control" id="email" type="email"
+                                placeholder="name@example.com" />
+                            <label for="email">Email address</label>
+                            <div id="emailalert" class="invalid-feedback">Email is not valid.</div>
+                        </div>
+                        <!-- Phone number input-->
+                        <div class="form-floating mb-3">
+                            <input name="phone" class="form-control" id="phone" type="tel" placeholder="(123) 456-7890"
+                                data-sb-validations="required" />
+                            <label for="phone">Phone number</label>
+                            <div id="phonealert" class="invalid-feedback">A phone number is required.</div>
+                        </div>
+                        <!-- Message input-->
+                        <div class="form-floating mb-3">
+                            <textarea name="message" class="form-control" id="message" type="text"
+                                placeholder="Enter your message here..." style="height: 10rem"
+                                data-sb-validations="required"></textarea>
+                            <label for="message">Message</label>
+                        </div>
+                        <!-- Submit success message-->
+                        <!---->
+                        <!-- This is what your users will see when the form-->
+                        <!-- has successfully submitted-->
+                        <!-- Submit error message-->
+                        <!---->
+                        <!-- This is what your users will see when there is-->
+                        <!-- an error submitting the form-->
+                        <div class="d-none" id="submitErrorMessage">
+                            <div class="text-center text-danger mb-3">Error sending message!</div>
+                        </div>
+                        <!-- Submit Button-->
+                        <button class="btn btn-primary btn-xl disabled mt-2" id="submitButton"
+                            type="submit">Send</button>
+                        <a class="btn btn-xl btn btn-primary mt-2" href="../Istiyaque Ahmed Ridoy.pdf" download
+                            target="_blank">
+                            <i class="fas fa-download me-2"></i>
+                            Download My Resume Here
+                        </a>
+                        <div class="valid-feedback" id="submitSuccessMessage">
+                            <div class="text-center mb-3">
+                                <div class="fw-bolder">Thanks for Reaching Out. Will Contact You Soon</div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer-->
+    <footer class="footer text-center">
+        <div class="container">
+            <div class="row">
+                <!-- Footer Location-->
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <h4 class="text-uppercase mb-4">Location</h4>
+                    <p class="lead mb-0">
+                        Dhaka Cantonment
+                        <br />
+                        Dhaka-1206
+                    </p>
+                </div>
+                <!-- Footer Social Icons-->
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <h4 class="text-uppercase mb-4">Around the Web</h4>
+                    <a class="btn btn-outline-light btn-social mx-1" href="https://facebook.com/i6ty3"
+                        target="_blank"><i class="fab fa-fw fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-light btn-social mx-1" href="https://github.com/i6ty3" target="_blank"><i
+                            class="fab fa-fw fa-github"></i></a>
+                    <a class="btn btn-outline-light btn-social mx-1" href="https://linkedin.com/in/i6ty3"
+                        target="_blank"><i class="fab fa-fw fa-linkedin-in"></i></a>
+                    <!-- <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-dribbble"></i></a> -->
+                    <div class="slider-container">
+                        <div id="slider">
+                            <div class='slide first-slide'>facebook.com/i6ty3</div>
+                            <div class='slide second-slide'>linkedin.com/in/i6ty3</div>
+                            <div class='slide third-slide'>github.com/i6ty3</div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Footer About Text-->
+                <div class="col-lg-4">
+                    <h4 class="text-uppercase mb-4">Contact</h4>
+                    <p class="lead mb-0">
+                        <a class="btn btn-outline-light btn-social mx-1" href="tel:+8801990303774"><i
+                                class="fas fa-fw fa-phone"></i></a>
+                        <a class="btn btn-outline-light btn-social mx-1" href="https://m.me/i6ty3" target="_blank"><i
+                                class="fab fa-fw fa-facebook-messenger"></i></a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Copyright Section-->
+    <div class="copyright py-4 text-center text-white">
+        <div class="container"><small>Copyright &copy; Istiyaque Ahmed Ridoy 2022</small></div>
+    </div>
+    <script src="project_charts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="../js/scripts.js"></script>
+</body>
+
+</html>
