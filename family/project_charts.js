@@ -595,8 +595,8 @@ async function stackedbar() {
         d3.select(this).style("filter", "None")
 
         Tooltip
-        // .style("opacity", 0)
-        .style("display", "None")
+            // .style("opacity", 0)
+            .style("display", "None")
     }
 
     let counter = 0;
@@ -674,3 +674,102 @@ async function stackedbar() {
 }
 stackedbar()
 
+async function distributton(figNum, binCol, num) {
+    // set the dimensions and margins of the graph
+    const margin = { top: 10, right: 10, bottom: 30, left: 50 },
+        width = 400 - margin.left - margin.right,
+        height = 250 - margin.top - margin.bottom;
+
+    // append the svg object to the body of the page
+    const svg = d3.select(`#${figNum}`)
+        .append("svg")
+        .attr("preserveAspectRatio", "xMinYMin meet")
+        .attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
+        .append("g")
+        .attr("transform", `translate(${margin.left}, ${margin.top})`)
+
+    // Append a tooltip div
+    const tooltip = d3.select(`#${figNum}`)
+        .append("g")
+        .attr("id", "tooltip")
+        .style("opacity", 0)
+
+    // Parse the Data
+    data = await d3.csv("distributton.csv");
+
+    // x - axis and the scale
+    const x = d3.scaleLinear()
+        .domain(d3.extent(data.map(d => ~~d[binCol])))  //double tilda makes it a int
+        .range([0, width])
+        .nice()
+    svg.append('g')
+        .attr("transform", `translate(0,${height})`)
+        .call(d3.axisBottom(x))
+
+
+    // y - axis and the scale
+    const y = d3.scaleLinear()
+        .range([height, 0])
+        .nice()
+    const yAxis = svg.append('g')
+
+    function histGen(nBin) {
+        //histogram bins and more
+        const histogram = d3.histogram()
+            .value(d => ~~d[binCol])
+            .domain(x.domain())
+            .thresholds(x.ticks(nBin))
+
+        var bins = histogram(data)
+
+        y.domain([0, d3.max(bins, d => d.length)])
+
+        yAxis.transition()
+            .duration(1000)
+            .call(d3.axisLeft(y))
+
+
+        const myBars = svg.selectAll("rect")
+            .data(bins)
+            .join("rect")
+            .style("fill", "#42BFDD")
+            .transition()
+            .duration(500)
+            .attr("transform", d => `translate(${x(d.x0) + 1}, ${y(d.length)})`)
+            .attr("width", d => x(d.x1) - x(d.x0) - 1)
+            .attr("height", d => height - y(d.length))
+            .on("end", function () {
+                // Event binding after transition
+                d3.select(this)
+                  .on("mouseover", (event, d) => {
+                    // Show tooltip on mouseover
+                    tooltip
+                    .transition()
+                      .duration(200)
+                      .style("opacity", 0.9);
+                    tooltip.html(`Count: ${d.length}`)
+                      .style("left", `${event.pageX}px`)
+                      .style("top", `${event.pageY - window.pageYOffset - 28}px`);
+                  })
+                  .on("mouseout", () => {
+                    // Hide tooltip on mouseout
+                    tooltip.transition()
+                      .duration(500)
+                      .style("opacity", 0);
+                  });
+              });
+
+
+    }
+    // Initialize with 20 bins
+    histGen(20)
+
+
+    // Listen to the button -> update if user change it
+    d3.select(`#nBin${num}`).on("input", function () {
+        histGen(this.value);
+    });
+}
+distributton('second-fig', 'Paid Maternity Leave', '1')
+distributton('third-fig', 'Unpaid Maternity Leave', '2')
+distributton('fourth-fig', 'Paid Maternity Leave', '3')
